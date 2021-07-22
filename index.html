@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form class="main">
+      <div class="main__select">
+        <select name="" class="main__select__what" onchange="selectFunc()" required>
+          <option value="">-- 신분증 종류를 선택해주세요 --</option>
+          <option value="min">주민등록증</option>
+          <option value="woon">운전면허증</option>
+        </select>
+      </div>
+      <div class="main__picture"></div>
+      <div class="main__file">
+        <input type="file" id="fileName" required />
+      </div>
+    </form>
+
+    <form class="text">
+      <h1> </h1>
+      <form class="text__input__min">
+        <label class="textName"> </label>
+        <input class="inputName" type="text" placeholder="" required />
+        <label class="textNum"> </label>
+        <input class="inputNum" type="text" placeholder="" required />
+        <label class="textDate"> </label>
+        <input class="inputDate" type="date" required/>
+        <button class="btn">제출</button>
+      </form>
+    </form>
+    <script
+      type="text/javascript"
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"
+    ></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
