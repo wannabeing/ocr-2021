@@ -16,9 +16,11 @@
           <option value="woon">운전면허증</option>
         </select>
       </div>
-      <div class="main__picture"></div>
-      <div class="main__file">
-        <input type="file" id="fileName" required />
+      <div class="main__picture hidden">
+        <img id="img" src="" alt="">
+      </div>
+      <div class="main__file hidden"> 
+        <input type="file" class="fileName" onchange="selectPic(event)" required />
       </div>
     </form>
 
