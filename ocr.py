@@ -1,5 +1,4 @@
 import json
-
 import cv2
 import requests
 import sys
@@ -7,7 +6,8 @@ import sys
 LIMIT_PX = 1024
 LIMIT_BYTE = 1024*1024  # 1MB
 LIMIT_BOX = 40
-rest_api_key = 'f26d1496764a6965cdd632f3d5da106a'
+kakao_rest_api_key = 'f26d1496764a6965cdd632f3d5da106a'
+
 
 def kakao_ocr_resize(image_path: str):
     """
@@ -40,7 +40,7 @@ def kakao_ocr(image_path: str, appkey: str):
     """
     OCR api request example
     :param image_path: 이미지파일 경로
-    ;param appkey: 카카오 앱 REST API 키
+    :param appkey: 카카오 앱 REST API 키
     """
     API_URL = 'https://dapi.kakao.com/v2/vision/text/ocr'
 
@@ -50,22 +50,25 @@ def kakao_ocr(image_path: str, appkey: str):
     jpeg_image = cv2.imencode(".jpg", image)[1]
     data = jpeg_image.tobytes()
 
-
     return requests.post(API_URL, headers=headers, files={"image": data})
 
 
 def main():
-    if len(sys.argv) != 3:
-        print("Please run with args: $ python example.py /path/to/image appkey")
-    image_path, appkey = sys.argv[1], sys.argv[2]
+    # if len(sys.argv) != 3:
+    #     print("Please run with args: $ python example.py /path/to/image appkey")
+    # image_path, appkey = sys.argv[1], sys.argv[2]
 
+    image_path = 'hdg.jpg'
     resize_impath = kakao_ocr_resize(image_path)
+    print(resize_impath)
     if resize_impath is not None:
         image_path = resize_impath
         print("원본 대신 리사이즈된 이미지를 사용합니다.")
 
-    output = kakao_ocr(image_path, appkey).json()
-    print("[OCR] output:\n{}\n".format(json.dumps(output, sort_keys=True, indent=2)))
+    output = kakao_ocr(image_path, kakao_rest_api_key).json()
+    # print("[OCR] output:\n{}\n".format(
+    #     json.dumps(output, sort_keys=True, indent=2)))
+    print(output)
 
 
 if __name__ == "__main__":
